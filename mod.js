@@ -1556,12 +1556,7 @@ class FlagPatcher {
 		// But something instanceof String does not work... Whatever.
 		if (something.constructor !== String)
 			return something;
-		return new Promise((resolve, reject) => {
-			const img = new Image();
-			img.onload = () => resolve(img);
-			img.onerror = reject;
-			img.src = something;
-		});
+		return ccmod.resources.loadImage(something);
 	}
 	async collect_all_flags() {
 		const cls = this.constructor;
